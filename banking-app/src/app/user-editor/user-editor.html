@@ -1,0 +1,22 @@
+<div class="row">
+    <h2>Ügyfél szerkesztése</h2>
+    <div class="col-md-12">
+        <form>
+            <div class="mb-2">
+                <label for="name">Név:</label>
+                <input type="text" name="name" id="name" class="form-control" [(ngModel)]="user().name">
+            </div>
+            <div class="mb-2">
+                <label for="address">Lakcím:</label>
+                <input type="text" name="address" id="address" class="form-control" [(ngModel)]="user().address">
+            </div>
+            <div class="mb-2">
+                <label for="balance">Egyenleg (Ft):</label>
+                <input type="number" name="balance" id="balance" class="form-control" [(ngModel)]="user().balance">
+            </div>
+            <div class="text-end">
+                <button class="btn btn-outline-primary" (click)="saveUser()">Mentés</button>
+            </div>
+        </form>
+    </div>
+</div>

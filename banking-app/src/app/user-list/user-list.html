@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Ügyfelek</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Név</th>
+                    <th>Lakcím</th>
+                    <th>Egyenleg</th>
+                    <th>Műveletek</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(user of users(); track user.id) {
+                    <tr>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.address }}</td>
+                        <td>{{ user.balance }} Ft</td>
+                        <td>
+                            <button class="btn btn-outline-primary me-2" (click)="editUser(user)">Szerkesztés</button>
+                            <button class="btn btn-outline-danger" (click)="deleteUser(user)">Törlés</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
