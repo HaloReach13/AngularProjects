@@ -1,0 +1,30 @@
+<div class="row">
+    <h2>Tranzakció szerkesztése</h2>
+    <div class="col-md-12">
+        <form>
+            <div class="mb-3">
+                <label for="amount">Összeg (Ft):</label>
+                <input type="number" name="amount" id="amount" class="form-control" [(ngModel)]="transaction().amount">
+            </div>
+            <div class="mb-3">
+                <label for="sender">Küldő:</label>
+                <select name="sender" id="sender" class="form-select" [(ngModel)]="transaction().sender">
+                    @for(user of users(); track user.id) {
+                        <option [ngValue]="{ id: user.id}">{{ user.name }}</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="receiver">Fogadó:</label>
+                <select name="receiver" id="receiver" class="form-select" [(ngModel)]="transaction().receiver">
+                    @for(user of users(); track user.id) {
+                        <option [ngValue]="{ id: user.id}">{{ user.name }}</option>
+                    }
+                </select>
+            </div>
+            <div class="text-end">
+                <button class="btn btn-outline-primary" (click)="saveTransaction()">Mentés</button>
+            </div>
+        </form>
+    </div>
+</div>

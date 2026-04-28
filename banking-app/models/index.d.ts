@@ -4,3 +4,10 @@ export interface UserDTO {
     address: string;
     balance: number;
 }
+
+export interface BankTransferDTO {
+    id: number;
+    amount: number;
+    sender: UserDTO;
+    receiver: UserDTO;
+}

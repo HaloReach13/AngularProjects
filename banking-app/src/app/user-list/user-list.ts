@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { UserService } from '../user-service';
-import { UserDTO } from '../../models';
+import { UserService } from '../services/user-service';
+import { UserDTO } from '../../../models';
 import { Router } from '@angular/router';
 
 @Component({

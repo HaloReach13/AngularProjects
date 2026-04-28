@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject ,Injectable } from '@angular/core';
-import { UserDTO } from "../models"
+import { UserDTO } from "../../../models"
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class UserService {
   }
 
   getOne(id: number) {
-    return this.http.get<UserDTO[]>('/api/user/' + id);
+    return this.http.get<UserDTO>('/api/user/' + id);
   }
 
   delete(id: number) {

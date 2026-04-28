@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { UserDTO } from '../../models';
+import { UserDTO } from '../../../models';
 import { FormsModule } from '@angular/forms'
-import { UserService } from '../user-service';
+import { UserService } from '../services/user-service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
