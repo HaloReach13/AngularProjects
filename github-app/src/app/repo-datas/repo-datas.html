@@ -1,0 +1,45 @@
+<div *ngIf="repo()" class="row justify-content-center mt-4">
+  <div class="col-md-8">
+    <div class="card shadow-sm">
+      <div class="card-header p-3 d-flex justify-content-between align-items-center">
+        <h3 class="mb-0"><i class="bi bi-box-seam me-2"></i>{{ repo()?.name }}</h3>
+        <span class="badge bg-light text-dark border">{{ repo()?.language || 'Ismeretlen nyelv' }}</span>
+      </div>
+      <div class="card-body p-4">
+        <p class="lead text-secondary mb-4">
+          {{ repo()?.description || 'Nincs leírás megadva ehhez a projekthez.' }}
+        </p>
+
+        <div class="row text-center mb-4 g-2">
+          <div class="col-6 col-sm-4">
+            <div class="p-3 bg-light rounded border">
+              <h5 class="text-warning mb-1"><i class="bi bi-star-fill"></i></h5>
+              <h6>{{ repo()?.stargazers_count }} csillag</h6>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4">
+            <div class="p-3 bg-light rounded border">
+              <h5 class="text-primary mb-1"><i class="bi bi-person-circle"></i></h5>
+              <h6>Készítő: <a [routerLink]="['/user', repo()?.owner?.login]" class="text-decoration-none fw-bold">{{ repo()?.owner?.login }}</a></h6>
+            </div>
+          </div>
+          <div class="col-12 col-sm-4">
+            <div class="p-3 bg-light rounded border">
+              <h5 class="text-dark mb-1"><i class="bi bi-code-slash"></i></h5>
+              <h6>ID: {{ repo()?.id }}</h6>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <a [href]="repo()?.html_url" target="_blank" class="btn btn-dark flex-grow-1">
+            <i class="bi bi-box-arrow-up-right me-2"></i>Megnyitás a GitHubon
+          </a>
+          <button class="btn btn-outline-secondary" onclick="history.back()">
+            <i class="bi bi-arrow-left me-1"></i>Vissza
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
