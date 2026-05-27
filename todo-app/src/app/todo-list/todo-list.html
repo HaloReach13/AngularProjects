@@ -1,0 +1,72 @@
+<div class="row">
+    <h2 class="text-center"><i class="bi bi-clipboard-check"></i> TODO alkalmazás</h2>
+    <div class="card bg-light p-3 mb-4">
+        <h5 class="card-title">Új feladat hozzáadása</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0 text-muted">
+                        <i class="bi bi-pencil"></i>
+                    </span>
+                    <input type="text" class="form-control border-start-0" [(ngModel)]="newDescription"
+                        placeholder="Mi a feladat?..." />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <input type="date" class="form-control" [(ngModel)]="newDeadline" />
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-success" (click)="createTodo()">
+                    <i class="bi bi-plus-lg"></i> Hozzáad
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex gap-2 mb-4">
+        <button class="btn d-flex align-items-center gap-1"
+            [ngClass]="!showOverdue ? 'btn-primary' : 'btn-outline-primary'" (click)="getTodos()">
+            <i class="bi bi-collection"></i> Összes feladat
+        </button>
+        <button class="btn d-flex align-items-center gap-1"
+            [ngClass]="showOverdue ? 'btn-danger' : 'btn-outline-danger'" (click)="getOverdueTodos()">
+            <i class="bi bi-exclamation-octagon"></i> Lejárt, befejezetlen feladatok
+        </button>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Leírás</th>
+                <th>Határidő</th>
+                <th>Teljesített</th>
+                <th>Műveletek</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(todo of todos(); track todo.id) {
+            <tr>
+                <td>{{ todo.description }}</td>
+                <td>{{ todo.deadline }}</td>
+                <td>
+                    <button class="btn p-0 border-0 fs-4 line-height-1" (click)="toggleComplete(todo)">
+                        @if(todo.completionStatus) {
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        } @else {
+                        <i class="bi bi-circle text-secondary"></i>
+                        }
+                    </button>
+                </td>
+                <td>
+                    <div>
+                        <button class="btn btn-outline-warning align-items-center me-2" (click)="editTodo(todo.id)">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button class="btn btn-outline-danger align-items-center" (click)="deleteTodo(todo.id)">
+                            <i class="bi bi-trash3-fill"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
